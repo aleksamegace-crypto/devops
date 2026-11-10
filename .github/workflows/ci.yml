@@ -7,8 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - run: |
-        docker build -t hello .
-        docker run -d -p 8000:8000 hello
-        chmod u+x test.sh 
-        ./test.sh
+      - name: Build Docker image and run tests
+        run: |
+          docker build -t hello .
+          docker run -d -p 8000:8000 hello
+          chmod u+x test.sh 
+          ./test.sh
